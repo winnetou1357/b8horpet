@@ -1,0 +1,3 @@
+// The configured options and settings for RockPaperScissors
+#define RockPaperScissors_VERSION_MAJOR @RockPaperScissors_VERSION_MAJOR@
+#define RockPaperScissors_VERSION_MINOR @RockPaperScissors_VERSION_MINOR@
