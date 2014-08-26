@@ -22,6 +22,7 @@ find_package (Boost COMPONENTS system REQUIRED)
 include_directories (${Boost_INCLUDE_DIR})
 
 # add the executable
+add_definitions ("-std=c++11 -Wall")
 add_executable (RockPaperScissors RockPaperScissors.cxx)
 target_link_libraries (RockPaperScissors ${Boost_LIBRARIES})
 
