@@ -22,7 +22,7 @@ Implementation of the well-known "rock, paper, scissors" game in which two progr
 
 ###Requirements Specification
 ...
-The two programs connect to each other given a hostname pr IP address and a port range. The programs play the game in a way that they can not cheat each other, while trying to maximize their scores. The game ends whenever one or the other program decides to finish it, but a game can be continued later.
+The two programs connect to each other given a hostname or IP address and a port range. The programs play the game in a way that they can not cheat each other, while trying to maximize their scores. The game ends whenever one or the other program decides to finish it, but a game can be continued later.
 ...
 
 ###Milestones
