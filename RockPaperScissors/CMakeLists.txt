@@ -18,11 +18,12 @@ configure_file (
 include_directories ("${PROJECT_BINARY_DIR}")
  
 # add dependencies
-find_package (Boost COMPONENTS system REQUIRED)
+find_package (Boost COMPONENTS system program_options REQUIRED)
 include_directories (${Boost_INCLUDE_DIR})
+find_package (Threads)
 
 # add the executable
-add_definitions ("-std=c++11 -Wall")
+add_definitions ("-std=c++11 -Wall -g")
 add_executable (RockPaperScissors RockPaperScissors.cxx)
-target_link_libraries (RockPaperScissors ${Boost_LIBRARIES})
+target_link_libraries (RockPaperScissors ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
