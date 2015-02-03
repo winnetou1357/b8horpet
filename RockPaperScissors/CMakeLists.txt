@@ -24,6 +24,6 @@ find_package (Threads)
 
 # add the executable
 add_definitions ("-std=c++11 -Wall -g")
-add_executable (RockPaperScissors RockPaperScissors.cxx)
+add_executable (RockPaperScissors RockPaperScissors.cxx CommandLine.cxx)
 target_link_libraries (RockPaperScissors ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
