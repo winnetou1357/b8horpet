@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <future>
 #include <thread>
-#include <algorithm>
 
 #include <boost/program_options.hpp>
 
@@ -146,7 +145,7 @@ int main (int argc, char** argv)
 
   po::variables_map vm;
   po::store(po::command_line_parser(argc, argv).options(desc).positional(pos).run(), vm);
-  po::notify(vm);    
+  po::notify(vm);
 
   if (vm.empty() || vm.count("help")
       || (vm.count("server") && vm.count("client"))
