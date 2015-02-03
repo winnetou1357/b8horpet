@@ -4,9 +4,10 @@
 
 #include <boost/program_options.hpp>
 
+#include "Options.hxx"
 #include "CommandLine.hxx"
 
-void HandleCommandLine(Options &opts, int argc, char **argv)
+void rps::commandline::Handle(rps::Options &opts, int argc, char **argv)
 {
   namespace po = boost::program_options;
 
@@ -98,7 +99,7 @@ void HandleCommandLine(Options &opts, int argc, char **argv)
       po::store(po::command_line_parser(clientOpts).options(clientDesc).positional(clientPos).run(), vm);
       po::notify(vm);
       
-      opts.mode = Options::Mode::Client;
+      opts.mode = rps::Options::Mode::Client;
       opts.host = vm.count("server") ? vm["server"].as<std::string>() : "";
       opts.port = vm.count("port") ? vm["port"].as<short>() : 0;
     }

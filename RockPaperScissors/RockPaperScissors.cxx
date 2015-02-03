@@ -10,10 +10,11 @@
 
 #include "RockPaperScissorsConfig.hxx"
 
+#include "Options.hxx"
 #include "CommandLine.hxx"
 
-namespace p2p
-{
+namespace rps {
+  
   using namespace boost::asio;
 
   /**
@@ -30,7 +31,7 @@ namespace p2p
       }
     };
   
-    Session (io_service& ioService, Options::Mode mode, const std::string& host, short port)
+    Session (io_service& ioService, rps::Options::Mode mode, const std::string& host, short port)
       : mIoService(ioService)
       , mResolver(ioService)
       , mSocket(ioService)
@@ -40,10 +41,10 @@ namespace p2p
     {
       switch (mMode)
       {
-        case Options::Mode::Server:
+        case rps::Options::Mode::Server:
           mHost = "";
           break;
-        case Options::Mode::Client:
+        case rps::Options::Mode::Client:
           break;
         default:
           throw InvalidMode();
@@ -82,9 +83,9 @@ namespace p2p
     void connect(const ip::tcp::resolver::iterator& endpointIterator)
     {
       try {
-        if (mMode == Options::Mode::Client) {
+        if (mMode == rps::Options::Mode::Client) {
           boost::asio::async_connect(mSocket, endpointIterator, boost::asio::use_future).get();
-        } else if (mMode == Options::Mode::Server) {
+        } else if (mMode == rps::Options::Mode::Server) {
           ip::tcp::acceptor acceptor(mIoService, ip::tcp::endpoint(ip::tcp::v4(), mPort));
  
           std::cout << "Waiting for connection on port " << mPort << std::endl;
@@ -114,19 +115,21 @@ namespace p2p
     ip::tcp::resolver mResolver;
     ip::tcp::socket   mSocket;
 	
-    Options::Mode mMode;
-    std::string   mHost;
-    short         mPort;
+    rps::Options::Mode  mMode;
+    std::string         mHost;
+    short               mPort;
     
   };
-}
-
+  
+} // namespace rps
 
 int main(int argc, char** argv)
 {
-  Options options;
+  namespace cl = rps::commandline;
+  
+  rps::Options options;
   try {
-    HandleCommandLine(options, argc, argv);
+    cl::Handle(options, argc, argv);
   } catch (std::exception &ex) {
     std::cerr << "Command line error: " << ex.what() << std::endl;
     return 1;
@@ -147,7 +150,7 @@ int main(int argc, char** argv)
   try
   {
     std::cout << "Starting game..." << std::endl;
-    p2p::Session session(ioService, options.mode, options.host, options.port);
+    rps::Session session(ioService, options.mode, options.host, options.port);
     session.run ();
   }
   catch (const std::exception& e)

@@ -1,20 +1,11 @@
-struct Options
-{
-  enum class Mode : char {
-    Undefined,
-    Server,
-    Client
-  };
-  
-  Mode        mode;
-  std::string host;
-  short       port;
+namespace rps {
+  struct Options;
+}
 
-  Options()
-    : mode(Mode::Undefined)
-    , host("any")
-    , port(0)
-  { }
-};
+namespace rps {
+namespace commandline {
 
-void HandleCommandLine(Options &opts, int argc, char **argv);
+  void Handle(rps::Options &opts, int argc, char **argv);
+
+} // namespace rps
+} // namespace commandline
