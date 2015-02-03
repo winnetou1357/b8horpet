@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <future>
 #include <thread>
+#include <set>
 
 #include <boost/program_options.hpp>
 
@@ -127,34 +128,137 @@ namespace p2p
   };
 }
 
-int main (int argc, char** argv)
+struct Options
+{
+  p2p::Session::Mode  mode;
+  std::string         host;
+  short               port;
+
+  Options()
+    : mode(p2p::Session::Mode::Undefined)
+    , host("")
+    , port(0)
+  { }
+};
+
+void HandleCommandLine(Options &opts, int argc, char **argv)
 {
   namespace po = boost::program_options;
 
-  po::positional_options_description pos;
-  pos.add("port", 1).add("host", 1);
+  std::set<std::string> allowedSubcommands{"server", "client"};
+  std::ostringstream allowedSubcommandsOutput;
+  for (const std::string &sc : allowedSubcommands) {
+    allowedSubcommandsOutput << sc << ", ";
+  }
+  std::string allowedSubcommandsAsString = allowedSubcommandsOutput.str();
+  allowedSubcommandsAsString.pop_back();  // trim trailing ", "
+  allowedSubcommandsAsString.pop_back();
   
-  po::options_description desc("USAGE: RockPaperScissors [--server PORT |--client PORT HOST]");
-  desc.add_options()
-    ("help,h", "produce help message")
-    ("server,s", "server mode")
-    ("client,c", "client mode")
-    ("host,r", po::value<std::string>(), "name or IP address of remote host")
-    ("port,p", po::value<short>(), "network port to communicate on with the remote host")
+  po::positional_options_description pos;
+  pos.add("subcommand", 1)
+     .add("subargs", -1)
   ;
 
-  po::variables_map vm;
-  po::store(po::command_line_parser(argc, argv).options(desc).positional(pos).run(), vm);
-  po::notify(vm);
+  po::options_description desc("USAGE: RockPaperScissors [global options] [subcommand and suboptions]");
+  desc.add_options()
+    ("help,h", "produce help message")
+    ("subcommand", po::value<std::string>()->required(), allowedSubcommandsAsString.c_str())
+    ("subargs", po::value<std::vector<std::string>>(), "options for subcommand - use '--help subcommand' for details")
+  ;
 
-  if (vm.empty() || vm.count("help")
-      || (vm.count("server") && vm.count("client"))
-      || (!vm.count("server") && !vm.count("client")))  // both or neither specified
+  try
   {
-    std::cout << desc << std::endl;
+    po::variables_map vm;
+    po::parsed_options parsed
+      = po::command_line_parser(argc, argv)
+        .options(desc)
+        .positional(pos)
+        .allow_unregistered()
+        .run();
+    po::store(parsed, vm);
+    
+    if (vm.empty() || vm.count("help"))
+    {
+      std::cerr << desc << std::endl;
+      exit(1);
+    }
+
+    po::notify(vm);
+    
+    std::string subcommand = vm["subcommand"].as<std::string>();
+    
+    if (subcommand == "server")
+    {
+      po::positional_options_description serverPos;
+      serverPos.add("port", 1);
+      
+      po::options_description serverDesc;
+      serverDesc.add_options()
+        ("port,p", po::value<short>()->required(), "network port to communicate on with the remote host")
+      ;
+
+      if (vm.count("help")) {
+        std::cerr << serverDesc << std::endl;
+        exit(1);
+      }
+
+      std::vector<std::string> serverOpts = po::collect_unrecognized(parsed.options, po::include_positional);
+      serverOpts.erase(serverOpts.begin());
+      po::store(po::command_line_parser(serverOpts).options(serverDesc).positional(serverPos).run(), vm);
+      po::notify(vm);
+
+      opts.mode = p2p::Session::Mode::Server;
+      opts.host = "any";
+      opts.port = vm.count("port") ? vm["port"].as<short>() : 0;
+    }
+    else if (subcommand == "client")
+    {
+      po::positional_options_description clientPos;
+      clientPos.add("server", 1);
+      clientPos.add("port", 1);
+      
+      po::options_description clientDesc;
+      clientDesc.add_options()
+        ("server,s", po::value<std::string>()->required(), "name or IP address of remote host")
+        ("port,p", po::value<short>()->required(), "network port to communicate on with the remote host")
+      ;
+
+      if (vm.count("help")) {
+        std::cerr << clientDesc << std::endl;
+        exit(1);
+      }
+
+      std::vector<std::string> clientOpts = po::collect_unrecognized(parsed.options, po::include_positional);
+      clientOpts.erase(clientOpts.begin());
+      po::store(po::command_line_parser(clientOpts).options(clientDesc).positional(clientPos).run(), vm);
+      po::notify(vm);
+      
+      opts.mode = p2p::Session::Mode::Client;
+      opts.host = vm.count("server") ? vm["server"].as<std::string>() : "";
+      opts.port = vm.count("port") ? vm["port"].as<short>() : 0;
+    }
+    else
+    {
+      std::cerr << desc << std::endl;
+      exit(1);
+    }
+  }
+  catch (std::exception &ex)
+  {
+    throw;
+  }
+}
+
+int main(int argc, char** argv)
+{
+  Options options;
+  try {
+    HandleCommandLine(options, argc, argv);
+  } catch (std::exception &ex) {
+    std::cerr << "Command line error: " << ex.what() << std::endl;
     return 1;
   }
-  
+
   boost::asio::io_service ioService;
   boost::asio::io_service::work work(ioService);
 
@@ -169,15 +273,8 @@ int main (int argc, char** argv)
 
   try
   {
-    p2p::Session::Mode mode
-      = vm.count("server") ? p2p::Session::Mode::Server
-      : vm.count("client") ? p2p::Session::Mode::Client
-      : p2p::Session::Mode::Undefined;
-    std::string host = vm.count("host") ? vm["host"].as<std::string>() : "";
-    short port = vm.count("port") ? vm["port"].as<short>() : 0;
-   
     std::cout << "Starting game..." << std::endl;
-    p2p::Session session(ioService, mode, host, port);
+    p2p::Session session(ioService, options.mode, options.host, options.port);
     session.run ();
   }
   catch (const std::exception& e)
