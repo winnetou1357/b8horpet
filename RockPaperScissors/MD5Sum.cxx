@@ -10,15 +10,16 @@
 
 
 // write the md5 digest in the usual format, each byte as 2 hexadecimal digits
-std::ostream& operator<< (const rps::crypto::md5::digest& md5digest)
+std::ostream& operator<< (std::ostream& os, const rps::crypto::md5::digest& md5digest)
 {
   for (const rps::crypto::md5::byte& digit : md5digest)
   {
     if (digit < 0x10) {
-      std::cout << 0;
+      os << 0;
     }
-    std::cout << std::hex << int(digit);
+    os << std::hex << int(digit);
   }
+  return os;
 }
 
 
