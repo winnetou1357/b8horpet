@@ -54,14 +54,3 @@ In any communication step an error can occur and the game ends, not counting an 
 ###Issues and points to consider
 
 * Its hard to define a timeout for the 4. point of the game protocol, namely the timeout acceptable between sending encrypted choices and the salt to decrypt them. If the timeout is too long one can break the MD5 hash regardless of the salt and take advantage of message ordering. A too short timeout along with a high network latency can lead to end of the game with no real reason.
-
-###First steps
-
-1. [x] Basic build system that is able to compile the program with boost/asio `include`d.
-2. [x] Hostname resolving.
-3. [x] Establishing and closing a TCP connection to a remote computer through the internet.
-4. [x] Sending and receiving some data over the network.
-5. [ ] Implement the protocol of the game (i.e. two programs can play a game with each other).
-6. [ ] Implement symmetric network connection method. This means that there is no need to specify a **server** or **client** role for the program at startup, just the remote host name and the port range that can be used for communication.
-7. [ ] Implement history handling and other cheat avoiding technics (see Game protocol).
-8. [ ] Implement ability to play with more that one partner at the same time.
