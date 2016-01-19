@@ -1,50 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="12.0">
-  <zoom_level>10</zoom_level>
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>11</zoom_level>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>550</x>
-      <y>690</y>
-      <w>250</w>
-      <h>130</h>
+      <x>792</x>
+      <y>693</y>
+      <w>297</w>
+      <h>142</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Result successfully sent
 Peer result successfully received
 Result != Peer result</panel_attributes>
-    <additional_attributes>130;110;130;30</additional_attributes>
+    <additional_attributes>154;121;154;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
-      <y>770</y>
-      <w>370</w>
-      <h>120</h>
+      <x>561</x>
+      <y>781</y>
+      <w>406</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Decided to finish game</panel_attributes>
-    <additional_attributes>30;30;150;30;150;100;350;100;350;70</additional_attributes>
+    <additional_attributes>33;33;165;33;165;110;385;110;385;77</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>550</y>
-      <w>150</w>
-      <h>50</h>
+      <x>968</x>
+      <y>539</y>
+      <w>164</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;130;30</additional_attributes>
+    <additional_attributes>33;33;143;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.FinalState</type>
     <coordinates>
-      <x>250</x>
-      <y>490</y>
-      <w>20</w>
-      <h>20</h>
+      <x>473</x>
+      <y>473</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -52,10 +51,10 @@ Decided to finish game</panel_attributes>
   <element>
     <type>com.umlet.element.custom.InitialState</type>
     <coordinates>
-      <x>670</x>
-      <y>110</y>
-      <w>20</w>
-      <h>20</h>
+      <x>935</x>
+      <y>55</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -63,21 +62,21 @@ Decided to finish game</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
-      <y>110</y>
-      <w>50</w>
-      <h>750</h>
+      <x>561</x>
+      <y>55</y>
+      <w>54</w>
+      <h>824</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;30;730</additional_attributes>
+    <additional_attributes>33;33;33;803</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>680</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>682</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Check result</panel_attributes>
     <additional_attributes/>
@@ -85,35 +84,35 @@ Decided to finish game</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
-      <y>650</y>
-      <w>320</w>
-      <h>70</h>
+      <x>561</x>
+      <y>649</y>
+      <w>351</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Not agree with peer in the result</panel_attributes>
-    <additional_attributes>30;50;300;50</additional_attributes>
+    <additional_attributes>33;55;330;55</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>550</x>
-      <y>450</y>
-      <w>250</w>
-      <h>130</h>
+      <x>792</x>
+      <y>429</y>
+      <w>306</w>
+      <h>142</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Choice succesfully sent
 Peer choice succesfully received</panel_attributes>
-    <additional_attributes>130;110;130;30</additional_attributes>
+    <additional_attributes>154;121;154;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>830</x>
-      <y>680</y>
-      <w>160</w>
-      <h>60</h>
+      <x>1111</x>
+      <y>682</y>
+      <w>176</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Send hash of history
 Receive hash of peers history
@@ -123,10 +122,10 @@ Terminate if not agree</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>800</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>814</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Process result</panel_attributes>
     <additional_attributes/>
@@ -134,10 +133,10 @@ Terminate if not agree</panel_attributes>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>830</x>
-      <y>320</y>
-      <w>100</w>
-      <h>40</h>
+      <x>1111</x>
+      <y>286</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Identification?
 Session ID?</panel_attributes>
@@ -146,24 +145,24 @@ Session ID?</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>550</x>
-      <y>570</y>
-      <w>242</w>
-      <h>130</h>
+      <x>803</x>
+      <y>561</y>
+      <w>284</w>
+      <h>142</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Salt succesfully sent
 Peer salt succesfully received
 Choices decoded</panel_attributes>
-    <additional_attributes>130;110;130;30</additional_attributes>
+    <additional_attributes>143;121;143;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>830</x>
-      <y>440</y>
-      <w>160</w>
-      <h>40</h>
+      <x>1111</x>
+      <y>418</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>MD5(&lt;salt&gt;[rps]&lt;salt&gt;)</panel_attributes>
     <additional_attributes/>
@@ -171,10 +170,10 @@ Choices decoded</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>200</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>154</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Try to connect
 </panel_attributes>
@@ -183,10 +182,10 @@ Choices decoded</panel_attributes>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>560</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>550</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Check choice
 (send salt)</panel_attributes>
@@ -195,33 +194,33 @@ Choices decoded</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>600</x>
-      <y>100</y>
-      <w>156</w>
-      <h>120</h>
+      <x>847</x>
+      <y>44</y>
+      <w>186</w>
+      <h>131</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 program startup</panel_attributes>
-    <additional_attributes>80;100;80;30</additional_attributes>
+    <additional_attributes>99;110;99;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>650</x>
-      <y>330</y>
-      <w>50</w>
-      <h>130</h>
+      <x>913</x>
+      <y>297</y>
+      <w>54</w>
+      <h>142</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>30;110;30;30</additional_attributes>
+    <additional_attributes>33;121;33;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>320</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>286</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Initiate game</panel_attributes>
     <additional_attributes/>
@@ -229,33 +228,33 @@ program startup</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>310</y>
-      <w>150</w>
-      <h>50</h>
+      <x>968</x>
+      <y>275</y>
+      <w>164</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;130;30</additional_attributes>
+    <additional_attributes>33;33;143;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>240</x>
-      <y>450</y>
-      <w>140</w>
-      <h>70</h>
+      <x>462</x>
+      <y>429</y>
+      <w>153</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 on error</panel_attributes>
-    <additional_attributes>30;50;120;50</additional_attributes>
+    <additional_attributes>33;55;132;55</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.State</type>
     <coordinates>
-      <x>630</x>
-      <y>440</y>
-      <w>100</w>
-      <h>40</h>
+      <x>891</x>
+      <y>418</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Start round
 (send choice)</panel_attributes>
@@ -264,55 +263,55 @@ on error</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>430</y>
-      <w>150</w>
-      <h>50</h>
+      <x>968</x>
+      <y>407</y>
+      <w>164</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;130;30</additional_attributes>
+    <additional_attributes>33;33;143;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>700</x>
-      <y>670</y>
-      <w>150</w>
-      <h>50</h>
+      <x>968</x>
+      <y>671</y>
+      <w>164</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>30;30;130;30</additional_attributes>
+    <additional_attributes>33;33;143;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>500</x>
-      <y>430</y>
-      <w>150</w>
-      <h>410</h>
+      <x>748</x>
+      <y>407</y>
+      <w>164</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>130;30;30;30;30;390;130;390</additional_attributes>
+    <additional_attributes>143;33;33;33;33;429;143;429</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>610</x>
-      <y>210</y>
-      <w>122</w>
-      <h>130</h>
+      <x>869</x>
+      <y>165</y>
+      <w>142</w>
+      <h>142</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 connected</panel_attributes>
-    <additional_attributes>70;110;70;30</additional_attributes>
+    <additional_attributes>77;121;77;33</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>830</x>
-      <y>560</y>
-      <w>160</w>
-      <h>40</h>
+      <x>1111</x>
+      <y>550</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -320,13 +319,13 @@ connected</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>330</x>
-      <y>530</y>
-      <w>320</w>
-      <h>70</h>
+      <x>561</x>
+      <y>517</y>
+      <w>351</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Peer sent invalid choice</panel_attributes>
-    <additional_attributes>30;50;300;50</additional_attributes>
+    <additional_attributes>33;55;330;55</additional_attributes>
   </element>
 </diagram>
