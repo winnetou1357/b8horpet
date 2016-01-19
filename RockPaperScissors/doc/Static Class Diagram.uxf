@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>60</x>
+      <y>530</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>GameLogic
+--
++GetRoundResult(Choice opponentChoice)
++GetNextChoice()
+--
+history of previous rounds</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>530</x>
+      <y>480</y>
+      <w>310</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>GameProtocol
+--
++BuildInitGameMessage()
++BuildEncryptedChoiceMessage()
++BuildSaltMessage()
++BuildRoundResultMessage()
++BuildEndOfGameMessage()
+ 
++ParseInitGameMessage()
++ParseEncryptedChoiceMessage()
++ParseSaltMessage()
++ParseRoundResultMessage()
++ParseEndOfGameMessage()
+--
+/stateless/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>180</x>
+      <y>160</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Session
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>190</y>
+      <w>320</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controls</panel_attributes>
+    <additional_attributes>300;130;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>220</y>
+      <w>210</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controls</panel_attributes>
+    <additional_attributes>190;260;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>170</x>
+      <y>220</y>
+      <w>114</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controls</panel_attributes>
+    <additional_attributes>40;310;80;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>810</x>
+      <y>340</y>
+      <w>140</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+builds</panel_attributes>
+    <additional_attributes>120;30;30;140</additional_attributes>
+  </element>
+  <group>
+    <element>
+      <type>com.umlet.element.Class</type>
+      <coordinates>
+        <x>660</x>
+        <y>220</y>
+        <w>330</w>
+        <h>160</h>
+      </coordinates>
+      <panel_attributes>IO::SymmetricDevice
+--
++AsyncSendAndReceive(message_t toSend)</panel_attributes>
+      <additional_attributes/>
+    </element>
+    <element>
+      <type>com.umlet.element.Class</type>
+      <coordinates>
+        <x>880</x>
+        <y>340</y>
+        <w>100</w>
+        <h>30</h>
+      </coordinates>
+      <panel_attributes>message_t</panel_attributes>
+      <additional_attributes/>
+    </element>
+  </group>
+</diagram>
