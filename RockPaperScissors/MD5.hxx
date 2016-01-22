@@ -1,3 +1,6 @@
+#ifndef RPS_CRYPTO_MD5_HXX
+#define RPS_CRYPTO_MD5_HXX
+
 #include <cstdint>
 #include <array>
 
@@ -15,3 +18,5 @@ namespace md5 {
 } // namespace md5
 } // namespace crypto
 } // namespace rps
+
+#endif // RPS_CRYPTO_MD5_HXX

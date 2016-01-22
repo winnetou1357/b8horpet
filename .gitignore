@@ -1,0 +1,6 @@
+# build directories
+*-build*/*
+
+# Precompiled Headers
+*/.kdev4/*
+*.kdev4
